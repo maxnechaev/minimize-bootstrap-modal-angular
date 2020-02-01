@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ModalComponent } from 'src/app/modal/modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'minimize-modals';
+
+  constructor(private modalService: NgbModal) {}
+
+  public openDialog() {
+    const modalRef = this.modalService.open(ModalComponent);
+    modalRef.componentInstance.name = 'World';
+  }
 }
